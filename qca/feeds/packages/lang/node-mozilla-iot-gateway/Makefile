@@ -54,13 +54,13 @@ define Build/Compile
 	npm_config_cache=$(TMP_DIR)/npm-cache \
 	npm_config_tmp=$(TMP_DIR)/npm-tmp \
 	PREFIX="$(PKG_INSTALL_DIR)/usr/" \
-	$(STAGING_DIR_HOSTPKG)/bin/npm install --build-from-source --target_arch=$(CPU) -g $(DL_DIR)/$(PKG_SOURCE)
+	$(STAGING_DIR_HOST)/bin/npm install --build-from-source --target_arch=$(CPU) -g $(DL_DIR)/$(PKG_SOURCE)
 endef
 
 define Package/node-mozilla-iot-gateway/install
 	$(INSTALL_DIR) $(1)/opt/mozilla-iot/gateway
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/node_modules/things-gateway/* $(1)/opt/mozilla-iot/gateway
-	$(STAGING_DIR_HOSTPKG)/bin/npm --prefix=$(1)/opt/mozilla-iot/gateway install $(1)/opt/mozilla-iot/gateway
+	$(STAGING_DIR_HOST)/bin/npm --prefix=$(1)/opt/mozilla-iot/gateway install $(1)/opt/mozilla-iot/gateway
 	$(LN) ../constants.js $(1)/opt/mozilla-iot/gateway/src/addons/addon-constants.js
 	$(LN) /tmp/mozilla-iot/gateway/run-app.log $(1)/opt/mozilla-iot/gateway/run-app.log
 
