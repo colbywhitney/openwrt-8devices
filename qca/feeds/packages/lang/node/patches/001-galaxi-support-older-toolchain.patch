@@ -1,0 +1,12 @@
+--- a/deps/v8/src/torque/ast.h	2021-05-11 18:47:47.000000000 +0000
++++ b/deps/v8/src/torque/ast.h	2021-07-05 23:40:21.546916595 +0000
+@@ -607,7 +607,7 @@
+   bool has_varargs = false;
+   std::string arguments_variable = "";
+ 
+-  static ParameterList Empty() { return {}; }
++  static ParameterList Empty() { return ParameterList(); }
+   std::vector<TypeExpression*> GetImplicitTypes() {
+     return std::vector<TypeExpression*>(types.begin(),
+                                         types.begin() + implicit_count);
+
